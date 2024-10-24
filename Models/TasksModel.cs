@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace TodoBackend.Models
 {
@@ -9,9 +10,11 @@ namespace TodoBackend.Models
 		[Key]
 		public int Id { get; set; }
 
+		[Required]
 		public string TaskName { get; set; }=String.Empty;
 
-		public bool Status { get; set; }
+		[JsonIgnore]
+		public bool Status { get; set; } = false;
 
 		public DateTime CreatedDate { get; set; }= DateTime.Now;
 
@@ -20,9 +23,9 @@ namespace TodoBackend.Models
 
 
 
-
+		[JsonIgnore]
 		//Foreign Key
 		[ForeignKey("UserId")]
-		public virtual UserModel Tasks { get; set; }
+		public virtual UserModel? User { get; set; }
 	}
 }
