@@ -13,13 +13,13 @@ namespace TodoBackend.Models
 		[Required]
 		public string TaskName { get; set; }=String.Empty;
 
-		[JsonIgnore]
+		 
 		public bool Status { get; set; } = false;
 
 		public DateTime CreatedDate { get; set; }= DateTime.Now;
 
-		public DateTime CompletedDate {  get; set; }= DateTime.Now;
-		public int UserId { get; set; }
+		public DateTime? CompletedDate {  get; set; } = DateTime.Now;
+        public int UserId { get; set; }
 
 
 
